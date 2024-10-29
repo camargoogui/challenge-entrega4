@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import specifyCar from '/public/images/specify-car.svg';
+import "../globals.css";
 
 const Veiculo: React.FC = () => {
   const [marca, setMarca] = useState('');

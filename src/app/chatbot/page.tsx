@@ -1,23 +1,19 @@
 import Link from 'next/link';
+import "../globals.css";
 
 export default function ChatBot() {
   return (
     <>
-      <header className="header">
-        <div className="container">
-        </div>
-      </header>
-
-      <main>
-        <section className="chat-section">
-          <div className="chat-container">
+      <main className="flex-1 flex flex-col items-center justify-center bg-black bg-cover bg-center" style={{ backgroundImage: "url('/images/38bcf9ecdd4b2d6e57e4c14ec9dfe563.png')" }}>
+        <section className="flex-1 w-full flex justify-center items-center p-4">
+          <div className="chat-container h-full w-full max-w-3xl border rounded-lg shadow-lg p-4 bg-gray-800">
             <div className="chat-header">
               <Link href="/" className="back-btn">&lt; Voltar</Link>
-              <h2 className="text-xl font-bold">ChatBot</h2>
-              <button className="text-xl">&#9881;</button>
+              <h2 className="text-xl font-bold text-white">ChatBot</h2>
+              <button className="text-xl text-white">&#9881;</button>
             </div>
 
-            <div className="chat-messages">
+            <div className="chat-messages overflow-y-auto mb-4 space-y-2 h-[calc(100vh-250px)]">
               <div className="message received">Olá! Como posso ajudar você hoje?</div>
               <div className="message sent">Meu carro está com problemas</div>
               <div className="message received">Qual seria o problema com o seu veículo?</div>
@@ -48,7 +44,7 @@ export default function ChatBot() {
             </div>
 
             <div className="chat-input">
-              <input type="text" placeholder="Digite sua mensagem" />
+              <input type="text" placeholder="Digite sua mensagem" className="flex-1 border rounded-md p-2" />
               <button className="send-btn">&#10148;</button>
             </div>
           </div>
