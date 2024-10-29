@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 /* Estilos globais personalizados */
+body {
+  @apply bg-black text-white m-0 p-0;
+}
+
 .header {
   @apply text-center mb-8;
 }
@@ -112,45 +116,37 @@ footer {
   }
 }
 
-/* Ajustes para a página Veiculo */
-.mainLogin {
-  @apply w-screen h-screen bg-cover flex justify-center items-center;
+/* Estilos para a página de Integrantes */
+.testimonials {
+  @apply text-center py-12 px-4 bg-black text-white;
 }
 
-.leftLogin {
-  @apply w-1/2 h-full flex flex-col justify-center items-center;
+.navbarBrand {
+  @apply text-white tracking-wider absolute top-5 left-5;
 }
 
-.leftLogin h1 {
-  @apply text-2xl text-white;
+.testimonialContainer {
+  @apply flex justify-center gap-5 flex-wrap;
 }
 
-.leftLoginImage {
-  @apply w-1/3;
+.testimonial {
+  @apply bg-white rounded-lg shadow-lg p-5 max-w-sm text-center;
 }
 
-.rightLogin {
-  @apply w-1/2 h-full flex justify-center items-center;
+.testimonial-img {
+  @apply rounded-full mb-4 object-cover;
 }
 
-.cardLogin {
-  @apply flex flex-col items-center p-8 bg-gray-800 rounded-lg shadow-xl;
+.testimonial-name {
+  @apply text-xl font-bold mb-2;
 }
 
-.textfield {
-  @apply w-full flex flex-col items-start mb-4;
+.testimonial-info {
+  @apply text-gray-600;
 }
 
-.textfield input {
-  @apply w-full p-4 bg-gray-800 text-white rounded-lg shadow-md outline-none placeholder-gray-400;
-}
-
-.textfield label {
-  @apply text-white mb-2;
-}
-
-.btnLogin {
-  @apply w-full py-4 mt-6 bg-gray-600 text-white font-bold rounded-lg shadow-md cursor-pointer hover:bg-gray-700 transition;
+.testimonial-info a {
+  @apply text-blue-500 hover:underline;
 }
 
 /* Responsividade para a página Veiculo */
@@ -175,6 +171,22 @@ footer {
   .cardLogin {
     @apply w-full;
   }
+
+  .testimonials {
+    @apply py-5 px-2;
+  }
+
+  .testimonial {
+    @apply max-w-full;
+  }
+
+  .testimonial-name {
+    @apply text-lg;
+  }
+
+  .testimonial-info {
+    @apply text-sm;
+  }
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
@@ -198,6 +210,22 @@ footer {
   .cardLogin {
     @apply w-full;
   }
+
+  .testimonials {
+    @apply py-8 px-4;
+  }
+
+  .testimonial {
+    @apply max-w-md;
+  }
+
+  .testimonial-name {
+    @apply text-lg;
+  }
+
+  .testimonial-info {
+    @apply text-sm;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -217,16 +245,56 @@ footer {
   .cardLogin {
     @apply w-3/5;
   }
+
+  .testimonials {
+    @apply py-10 px-6;
+  }
+
+  .testimonial {
+    @apply max-w-lg;
+  }
+
+  .testimonial-name {
+    @apply text-xl;
+  }
+
+  .testimonial-info {
+    @apply text-base;
+  }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
   .cardLogin {
     @apply w-3/5;
   }
+
+  .testimonial {
+    @apply max-w-sm;
+  }
+
+  .testimonial-name {
+    @apply text-xl;
+  }
+
+  .testimonial-info {
+    @apply text-base;
+  }
 }
 
 @media (min-width: 1200px) {
   .cardLogin {
     @apply w-1/2;
+  }
+
+  .testimonial {
+    @apply max-w-xs;
+  }
+
+  .testimonial-name {
+    @apply text-xl;
+  }
+
+  .testimonial-info {
+    @apply text-base;
   }
 }

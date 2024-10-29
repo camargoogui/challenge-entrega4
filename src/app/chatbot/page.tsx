@@ -14,23 +14,23 @@ export default function ChatBot() {
             </div>
 
             <div className="chat-messages overflow-y-auto mb-4 space-y-2 h-[calc(100vh-250px)]">
-              <div className="message received">Olá! Como posso ajudar você hoje?</div>
-              <div className="message sent">Meu carro está com problemas</div>
-              <div className="message received">Qual seria o problema com o seu veículo?</div>
-              <div className="message sent">O carro está demorando para pegar partida</div>
-              <div className="message received">
+              <div className="message received text-black">Olá! Como posso ajudar você hoje?</div>
+              <div className="message sent text-black">Meu carro está com problemas</div>
+              <div className="message received text-black">Qual seria o problema com o seu veículo?</div>
+              <div className="message sent text-black">O carro está demorando para pegar partida</div>
+              <div className="message received text-black">
                 As velas de ignição são responsáveis por criar a faísca necessária para iniciar o veículo.
                 Gostaria de um orçamento?
               </div>
-              <div className="message sent">Sim</div>
-              <div className="message received">
+              <div className="message sent text-black">Sim</div>
+              <div className="message received text-black">
                 O orçamento para velas de ignição seria em média de R$ 200.
                 Gostaria de ver a mecânica parceira mais próxima do seu endereço?
               </div>
-              <div className="message sent">Sim</div>
-              <div className="message received">Por gentileza, digite seu CEP.</div>
-              <div className="message sent">05874-010</div>
-              <div className="message received">
+              <div className="message sent text-black">Sim</div>
+              <div className="message received text-black">Por gentileza, digite seu CEP.</div>
+              <div className="message sent text-black">05874-010</div>
+              <div className="message received text-black">
                 Localizamos que a mecânica parceira mais próxima do seu endereço fica a 14.7km.
                 Gostaria de adicionar a rota no Waze ou Google Maps?
               </div>
@@ -38,9 +38,9 @@ export default function ChatBot() {
                 <button className="map-btn">Waze</button>
                 <button className="map-btn">Google Maps</button>
               </div>
-              <div className="message received">Perfeito! Te ajudo em algo mais?</div>
-              <div className="message sent">Não, obrigado.</div>
-              <div className="message received">Eu que agradeço! Qualquer dúvida estou à disposição.</div>
+              <div className="message received text-black">Perfeito! Te ajudo em algo mais?</div>
+              <div className="message sent text-black">Não, obrigado.</div>
+              <div className="message received text-black">Eu que agradeço! Qualquer dúvida estou à disposição.</div>
             </div>
 
             <div className="chat-input">
