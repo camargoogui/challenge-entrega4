@@ -9,8 +9,8 @@ const Cabecalho: React.FC = () => {
       </Link>
       <nav className="flex space-x-8">
         <Link href="/" className="text-white hover:text-gray-700">Início</Link>
-        <Link href="/todos-os-servicos" className="text-white hover:text-gray-700">Todos os Serviços</Link>
-        <Link href="/fale-conosco" className="text-white hover:text-gray-700">Fale Conosco</Link>
+        <Link href="/veiculo" className="text-white hover:text-gray-700">Todos os Serviços</Link>
+        <Link href="/chatbot" className="text-white hover:text-gray-700">Fale Conosco</Link>
         <Link href="/integrantes" className="text-white hover:text-gray-700">Integrantes</Link>
         <Link href="/login" className="text-white hover:text-gray-700">Entrar</Link>
       </nav>
