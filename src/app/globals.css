@@ -149,26 +149,67 @@ footer {
   @apply text-blue-500 hover:underline;
 }
 
-/* Responsividade para a página Veiculo */
+/* Estilos para a página de Login e Veículo */
+.mainLogin, .mainVeiculo {
+  @apply w-screen h-screen bg-cover flex justify-center items-center bg-black;
+  background-image: url('/images/38bcf9ecdd4b2d6e57e4c14ec9dfe563.png');
+}
+
+.leftLogin, .leftVeiculo {
+  @apply w-1/2 h-full flex flex-col justify-center items-center;
+}
+
+.leftLogin h1, .leftVeiculo h1 {
+  @apply text-3xl text-white mb-4;
+}
+
+.leftLoginImage, .leftVeiculoImage {
+  @apply w-1/3;
+}
+
+.rightLogin, .rightVeiculo {
+  @apply w-1/2 h-full flex justify-center items-center;
+}
+
+.cardLogin, .cardVeiculo {
+  @apply flex flex-col items-center p-8 bg-gray-800 rounded-lg shadow-xl;
+}
+
+.textfield {
+  @apply w-full flex flex-col items-start mb-4;
+}
+
+.textfield-label {
+  @apply text-white mb-2;
+}
+
+.textfield-input {
+  @apply w-full p-4 bg-gray-800 text-white rounded-lg shadow-md outline-none placeholder-gray-400;
+}
+
+.btnLogin, .btnVeiculo {
+  @apply w-full py-4 mt-6 bg-gray-600 text-white font-bold rounded-lg shadow-md cursor-pointer hover:bg-gray-700 transition;
+}
+
+/* Responsividade para Login e Veículo */
 @media (max-width: 575px) {
-  .mainLogin {
+  .mainLogin, .mainVeiculo, .testimonials {
     @apply flex-col;
   }
 
-  .leftLogin h1 {
+  .leftLogin h1, .leftVeiculo h1 {
     @apply hidden;
   }
 
-  .leftLogin,
-  .rightLogin {
+  .leftLogin, .rightLogin, .leftVeiculo, .rightVeiculo {
     @apply w-full h-auto;
   }
 
-  .leftLoginImage {
+  .leftLoginImage, .leftVeiculoImage {
     @apply w-1/2;
   }
 
-  .cardLogin {
+  .cardLogin, .cardVeiculo {
     @apply w-full;
   }
 
@@ -190,24 +231,23 @@ footer {
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
-  .mainLogin {
+  .mainLogin, .mainVeiculo, .testimonials {
     @apply flex-col;
   }
 
-  .leftLogin h1 {
+  .leftLogin h1, .leftVeiculo h1 {
     @apply hidden;
   }
 
-  .leftLogin,
-  .rightLogin {
+  .leftLogin, .rightLogin, .leftVeiculo, .rightVeiculo {
     @apply w-full h-auto;
   }
 
-  .leftLoginImage {
+  .leftLoginImage, .leftVeiculoImage {
     @apply w-1/2;
   }
 
-  .cardLogin {
+  .cardLogin, .cardVeiculo {
     @apply w-full;
   }
 
@@ -229,20 +269,19 @@ footer {
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  .mainLogin {
+  .mainLogin, .mainVeiculo, .testimonials {
     @apply flex-row;
   }
 
-  .leftLogin,
-  .rightLogin {
+  .leftLogin, .rightLogin, .leftVeiculo, .rightVeiculo {
     @apply w-1/2 h-screen;
   }
 
-  .leftLoginImage {
+  .leftLoginImage, .leftVeiculoImage {
     @apply w-1/3;
   }
 
-  .cardLogin {
+  .cardLogin, .cardVeiculo {
     @apply w-3/5;
   }
 
@@ -264,11 +303,7 @@ footer {
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-  .cardLogin {
-    @apply w-3/5;
-  }
-
-  .testimonial {
+  .cardLogin, .cardVeiculo, .testimonial {
     @apply max-w-sm;
   }
 
@@ -282,7 +317,7 @@ footer {
 }
 
 @media (min-width: 1200px) {
-  .cardLogin {
+  .cardLogin, .cardVeiculo {
     @apply w-1/2;
   }
 
