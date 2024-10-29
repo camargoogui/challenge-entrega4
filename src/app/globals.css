@@ -2,20 +2,112 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Estilos globais personalizados */
+.header {
+    @apply text-center mb-8;
   }
+  
+  .title {
+    @apply text-4xl font-bold mb-4;
+  }
+  
+  .subtitle {
+    @apply text-2xl mb-6;
+  }
+  
+  .banner {
+    @apply mx-auto mb-4;
+  }
+  
+  .diagnosticButton {
+    @apply bg-blue-600 text-white py-2 px-6 rounded-md mt-4 hover:bg-blue-700;
+  }
+  
+  .nav-list {
+    @apply flex space-x-4;
+  }
+  
+  .nav-list li {
+    @apply list-none;
+  }
+
+/* Estilos globais do Chatbot */
+.header {
+  @apply flex items-center justify-between bg-gray-800 text-white p-4;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.container {
+  @apply mx-auto;
 }
+
+.navbar-brand {
+  @apply text-2xl font-bold;
+}
+
+.chat-section {
+  @apply py-8 px-4 flex flex-col items-center;
+}
+
+.chat-container {
+  @apply w-full max-w-lg border rounded-lg shadow-lg p-4;
+}
+
+.chat-header {
+  @apply flex items-center justify-between mb-4;
+}
+
+.back-btn {
+  @apply text-blue-500;
+}
+
+.chat-messages {
+  @apply max-h-96 overflow-y-auto mb-4 space-y-2;
+}
+
+.message {
+  @apply p-2 rounded-md;
+}
+
+.received {
+  @apply bg-gray-100 self-start;
+}
+
+.sent {
+  @apply bg-blue-100 self-end;
+}
+
+.map-btn {
+  @apply bg-blue-600 text-white px-4 py-2 rounded-md;
+}
+
+.chat-input {
+  @apply flex items-center space-x-2;
+}
+
+.chat-input input {
+  @apply flex-1 border rounded-md p-2;
+}
+
+.send-btn {
+  @apply bg-blue-600 text-white px-4 py-2 rounded-md;
+}
+
+header {
+    @apply text-white;
+        }
+
+footer {
+    @apply bg-black text-white py-4 mt-8;
+
+    & div {
+      @apply text-center;
+      
+      & h2 {
+        @apply text-lg font-semibold;
+        
+        & p {
+          @apply text-sm;
+        }
+        }
+        }
+    }
