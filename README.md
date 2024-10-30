@@ -1,36 +1,18 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
+  
+# CP3 Front End
+</div>
 
-## Getting Started
+---
 
-First, run the development server:
+Neste repositório está o nosso projeto para a entrega 4 do Challenge referente a matéria **Front-End Design Engineering** da faculdade FIAP solicitado pelo nosso professor Alexandre Carlos de Jesus.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+--- 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Membros do grupo:
+- Bianca Vitoria <a href="https://github.com/biancavitoria15">biancavitoria15</a> - Rm 556270
+- Guilherme Camargo <a href="https://github.com/camargoogui">camargoogui</a> - Rm 555166
+- Ícaro Albuquerque <a href="https://github.com/icaroalb1">icaroalb1</a> - Rm 555161
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Link do repositório:
+https://github.com/camargoogui/challenge-entrega4
