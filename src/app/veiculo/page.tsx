@@ -1,38 +1,93 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import specifyCar from '/public/images/specify-car.svg';
 import "../globals.css";
+import { createVeiculo, updateVeiculo, deleteVeiculo, fetchVeiculos } from '../../api/api';
 
-const Veiculo: React.FC = () => {
-  const [marca, setMarca] = useState('');
-  const [modelo, setModelo] = useState('');
-  const [ano, setAno] = useState('');
-  const [placa, setPlaca] = useState('');
-  const router = useRouter();
+// Definindo a interface para o tipo Veiculo
+interface Veiculo {
+    id: number;
+    marca: string;
+    modelo: string;
+    ano: number;
+    placa: string;
+}
 
-  const validarPlaca = (placa: string) => {
-    const regexPlaca = /^[A-Z]{3}[0-9][A-Z0-9][0-9]{2}$/;
-    return regexPlaca.test(placa);
-  };
+const VeiculoComponent: React.FC = () => {
+  const [id, setId] = useState<string>(''); // Novo estado para ID
+  const [marca, setMarca] = useState<string>('');
+  const [modelo, setModelo] = useState<string>('');
+  const [ano, setAno] = useState<string>('');
+  const [placa, setPlaca] = useState<string>('');
+  const [veiculos, setVeiculos] = useState<Veiculo[]>([]);
+  const [editandoId, setEditandoId] = useState<number | null>(null);
 
-  const validarFormularioVeiculo = (e: React.FormEvent) => {
+  useEffect(() => {
+    fetchVeiculos()
+      .then((data: Veiculo[]) => setVeiculos(data))
+      .catch((error: unknown) => console.error('Erro ao buscar veículos:', error));
+  }, []);
+
+  const validarPlaca = (placa: string) => /^[A-Z]{3}[0-9][A-Z0-9][0-9]{2}$/.test(placa);
+
+  const validarFormularioVeiculo = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!marca || !modelo || !ano || !placa) {
+    if (!id || !marca || !modelo || !ano || !placa) {
       alert('Por favor, preencha todos os campos.');
-      return false;
+      return;
     }
 
     if (!validarPlaca(placa)) {
       alert('Placa inválida. A placa deve estar no formato ABC-1234 ou ABC1D23.');
-      return false;
+      return;
     }
 
-    // Redireciona para a página de chatbot após a validação
-    router.push('/chatbot');
-    return true;
+    try {
+      const veiculoData = { id: parseInt(id), marca, modelo, ano: parseInt(ano), placa };
+
+      if (editandoId) {
+        // Atualiza veículo existente
+        await updateVeiculo(editandoId, veiculoData);
+        setVeiculos(await fetchVeiculos());
+        alert('Veículo atualizado com sucesso!');
+        setEditandoId(null);
+      } else {
+        // Cria novo veículo
+        const novoVeiculo = await createVeiculo(veiculoData);
+        setVeiculos((prevVeiculos) => [...prevVeiculos, novoVeiculo]);
+        alert('Veículo criado com sucesso!');
+      }
+
+      // Limpa os campos após o cadastro ou atualização
+      setId('');
+      setMarca('');
+      setModelo('');
+      setAno('');
+      setPlaca('');
+    } catch (error) {
+      console.error('Erro ao cadastrar/atualizar veículo:', error);
+    }
+  };
+
+  const handleUpdateClick = (veiculo: Veiculo) => {
+    setId(veiculo.id.toString());
+    setMarca(veiculo.marca);
+    setModelo(veiculo.modelo);
+    setAno(veiculo.ano.toString());
+    setPlaca(veiculo.placa);
+    setEditandoId(veiculo.id);
+  };
+
+  const handleDelete = async (id: number) => {
+    try {
+      await deleteVeiculo(id);
+      setVeiculos(await fetchVeiculos());
+      alert('Veículo deletado com sucesso!');
+    } catch (error) {
+      console.error('Erro ao deletar veículo:', error);
+    }
   };
 
   return (
@@ -44,63 +99,61 @@ const Veiculo: React.FC = () => {
       <div className="flex items-center justify-center w-1/2 h-full">
         <div className="flex flex-col items-center p-8 bg-gray-800 rounded-lg shadow-xl w-3/5">
           <h1 className="text-white font-bold mb-4">ESPECIFIQUE SEU VEÍCULO</h1>
-          <div className="w-full flex flex-col items-start mb-4">
-            <label htmlFor="marca" className="text-white mb-2">MARCA</label>
+          <form onSubmit={validarFormularioVeiculo} className="w-full">
             <input
               type="text"
-              id="marca"
-              name="marca"
+              value={id}
+              onChange={(e) => setId(e.target.value)}
+              placeholder="ID"
+              className="w-full p-4 bg-gray-800 text-white rounded-lg shadow-md outline-none placeholder-gray-400 mb-4"
+            />
+            <input
+              type="text"
               value={marca}
               onChange={(e) => setMarca(e.target.value)}
               placeholder="MARCA"
-              className="w-full p-4 bg-gray-800 text-white rounded-lg shadow-md outline-none placeholder-gray-400"
+              className="w-full p-4 bg-gray-800 text-white rounded-lg shadow-md outline-none placeholder-gray-400 mb-4"
             />
-          </div>
-          <div className="w-full flex flex-col items-start mb-4">
-            <label htmlFor="modelo" className="text-white mb-2">MODELO</label>
             <input
               type="text"
-              id="modelo"
-              name="modelo"
               value={modelo}
               onChange={(e) => setModelo(e.target.value)}
               placeholder="MODELO"
-              className="w-full p-4 bg-gray-800 text-white rounded-lg shadow-md outline-none placeholder-gray-400"
+              className="w-full p-4 bg-gray-800 text-white rounded-lg shadow-md outline-none placeholder-gray-400 mb-4"
             />
-          </div>
-          <div className="w-full flex flex-col items-start mb-4">
-            <label htmlFor="ano" className="text-white mb-2">ANO DE FABRICAÇÃO</label>
             <input
               type="text"
-              id="ano"
-              name="ano"
               value={ano}
               onChange={(e) => setAno(e.target.value)}
               placeholder="ANO DE FABRICAÇÃO"
-              className="w-full p-4 bg-gray-800 text-white rounded-lg shadow-md outline-none placeholder-gray-400"
+              className="w-full p-4 bg-gray-800 text-white rounded-lg shadow-md outline-none placeholder-gray-400 mb-4"
             />
-          </div>
-          <div className="w-full flex flex-col items-start mb-4">
-            <label htmlFor="placa" className="text-white mb-2">PLACA</label>
             <input
               type="text"
-              id="placa"
-              name="placa"
               value={placa}
               onChange={(e) => setPlaca(e.target.value)}
               placeholder="PLACA"
-              className="w-full p-4 bg-gray-800 text-white rounded-lg shadow-md outline-none placeholder-gray-400"
+              className="w-full p-4 bg-gray-800 text-white rounded-lg shadow-md outline-none placeholder-gray-400 mb-4"
             />
-          </div>
-          <form onSubmit={validarFormularioVeiculo} className="w-full">
-            <button className="w-full py-4 mt-6 bg-gray-600 text-white font-bold rounded-lg shadow-md cursor-pointer hover:bg-gray-700 transition">
-              ENVIAR
+            <button type="submit" className="w-full py-4 mt-6 bg-gray-600 text-white font-bold rounded-lg shadow-md cursor-pointer hover:bg-gray-700 transition">
+              {editandoId ? 'ATUALIZAR' : 'ENVIAR'}
             </button>
           </form>
+          <ul className="w-full mt-6">
+            {veiculos.map((veiculo, index) => (
+              <li key={veiculo.id || index} className="flex justify-between items-center bg-gray-700 text-white p-4 rounded-lg mb-2">
+                {veiculo.id} - {veiculo.marca} - {veiculo.modelo} - {veiculo.ano} - {veiculo.placa}
+                <div>
+                  <button onClick={() => handleUpdateClick(veiculo)} className="mr-2 px-4 py-2 bg-blue-600 rounded hover:bg-blue-700">Atualizar</button>
+                  <button onClick={() => handleDelete(veiculo.id)} className="px-4 py-2 bg-red-600 rounded hover:bg-red-700">Deletar</button>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
   );
 };
 
-export default Veiculo;
+export default VeiculoComponent;
